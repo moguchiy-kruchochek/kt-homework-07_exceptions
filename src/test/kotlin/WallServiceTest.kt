@@ -9,7 +9,7 @@ class WallServiceTest {
     fun add() {
         val service = WallService()
         val likes = Likes()
-
+        val comment = Comment()
 
         val post = Post(
             3,
@@ -21,7 +21,8 @@ class WallServiceTest {
             true,
             false,
             likes,
-            arrayOf()
+            arrayOf(),
+            comment
         )
 
         val result = service.add(post)
@@ -32,6 +33,7 @@ class WallServiceTest {
     fun updateExistingWithTrueResult() {
         val service = WallService()
         val likes = Likes()
+        val comment = Comment()
 
         service.add(
             Post(
@@ -44,7 +46,8 @@ class WallServiceTest {
                 false,
                 null,
                 likes,
-                arrayOf()
+                arrayOf(),
+                comment
             )
         )
         service.add(
@@ -58,7 +61,8 @@ class WallServiceTest {
                 true,
                 false,
                 likes,
-                arrayOf()
+                arrayOf(),
+                comment
             )
         )
         service.add(
@@ -72,7 +76,8 @@ class WallServiceTest {
                 false,
                 false,
                 likes,
-                arrayOf()
+                arrayOf(),
+                comment
             )
         )
 
@@ -86,7 +91,8 @@ class WallServiceTest {
             null,
             null,
             likes,
-            arrayOf()
+            arrayOf(),
+            comment
         )
 
         val result = service.update(update)
@@ -98,6 +104,7 @@ class WallServiceTest {
     fun updateWithFalseResult() {
         val service = WallService()
         val likes = Likes()
+        val comment = Comment()
 
         service.add(
             Post(
@@ -110,7 +117,8 @@ class WallServiceTest {
                 false,
                 true,
                 likes,
-                arrayOf()
+                arrayOf(),
+                comment
             )
 
         )
@@ -126,6 +134,7 @@ class WallServiceTest {
                 false,
                 likes,
                 arrayOf(),
+                comment
             )
         )
         service.add(
@@ -139,7 +148,8 @@ class WallServiceTest {
                 false,
                 false,
                 likes,
-                arrayOf()
+                arrayOf(),
+                comment
             )
         )
 
@@ -153,11 +163,60 @@ class WallServiceTest {
             null,
             null,
             likes,
-            arrayOf()
+            arrayOf(),
+            comment
         )
 
         val result = service.update(update)
 
         assertFalse("No Posts with such ID :(", result)
+    }
+
+    @Test
+    fun createCommentAtExistPost() {
+        val service = WallService()
+        val likes = Likes()
+        val comment = Comment()
+
+        service.add(
+            Post(
+                1,
+                "11.11.20",
+                "text51",
+                true,
+                "authorr",
+                true,
+                false,
+                true,
+                likes,
+                arrayOf(),
+                comment
+            )
+        )
+        service.createComment(1, comment)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createCommentAtNotExistPost() {
+        val service = WallService()
+        val likes = Likes()
+        val comment = Comment()
+
+        service.add(
+            Post(
+                1,
+                "11.11.20",
+                "text51",
+                true,
+                "authorr",
+                true,
+                false,
+                true,
+                likes,
+                arrayOf(),
+                comment
+            )
+        )
+        service.createComment(10, comment)
     }
 }
