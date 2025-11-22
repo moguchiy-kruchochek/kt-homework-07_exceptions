@@ -21,6 +21,7 @@ class WallServiceTest {
             true,
             false,
             likes,
+            arrayOf()
         )
 
         val result = service.add(post)
@@ -43,6 +44,7 @@ class WallServiceTest {
                 false,
                 null,
                 likes,
+                arrayOf()
             )
         )
         service.add(
@@ -56,6 +58,7 @@ class WallServiceTest {
                 true,
                 false,
                 likes,
+                arrayOf()
             )
         )
         service.add(
@@ -69,6 +72,7 @@ class WallServiceTest {
                 false,
                 false,
                 likes,
+                arrayOf()
             )
         )
 
@@ -82,6 +86,7 @@ class WallServiceTest {
             null,
             null,
             likes,
+            arrayOf()
         )
 
         val result = service.update(update)
@@ -105,6 +110,7 @@ class WallServiceTest {
                 false,
                 true,
                 likes,
+                arrayOf()
             )
 
         )
@@ -119,6 +125,7 @@ class WallServiceTest {
                 true,
                 false,
                 likes,
+                arrayOf(),
             )
         )
         service.add(
@@ -132,6 +139,7 @@ class WallServiceTest {
                 false,
                 false,
                 likes,
+                arrayOf()
             )
         )
 
@@ -145,6 +153,7 @@ class WallServiceTest {
             null,
             null,
             likes,
+            arrayOf()
         )
 
         val result = service.update(update)
