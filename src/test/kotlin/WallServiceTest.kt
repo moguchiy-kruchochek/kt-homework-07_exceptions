@@ -21,6 +21,7 @@ class WallServiceTest {
             true,
             false,
             likes,
+            arrayOf()
         )
 
         val result = service.add(post)
@@ -41,8 +42,9 @@ class WallServiceTest {
                 "authorr",
                 true,
                 false,
-                true,
+                null,
                 likes,
+                arrayOf()
             )
         )
         service.add(
@@ -52,10 +54,11 @@ class WallServiceTest {
                 "super text",
                 false,
                 "corp",
-                true,
+                null,
                 true,
                 false,
                 likes,
+                arrayOf()
             )
         )
         service.add(
@@ -63,12 +66,13 @@ class WallServiceTest {
                 0,
                 "03.03.25",
                 "important",
-                true,
+                null,
                 "mine",
                 true,
                 false,
                 false,
                 likes,
+                arrayOf()
             )
         )
 
@@ -78,10 +82,11 @@ class WallServiceTest {
             "IMPORTANT!",
             true,
             "me",
-            true,
-            true,
-            true,
+            null,
+            null,
+            null,
             likes,
+            arrayOf()
         )
 
         val result = service.update(update)
@@ -105,6 +110,7 @@ class WallServiceTest {
                 false,
                 true,
                 likes,
+                arrayOf()
             )
 
         )
@@ -119,6 +125,7 @@ class WallServiceTest {
                 true,
                 false,
                 likes,
+                arrayOf(),
             )
         )
         service.add(
@@ -132,6 +139,7 @@ class WallServiceTest {
                 false,
                 false,
                 likes,
+                arrayOf()
             )
         )
 
@@ -139,12 +147,13 @@ class WallServiceTest {
             6,
             "03.04.25",
             "IMPORTANT!",
-            true,
+            null,
             "me",
-            true,
-            true,
-            true,
+            null,
+            null,
+            null,
             likes,
+            arrayOf()
         )
 
         val result = service.update(update)
