@@ -12,11 +12,11 @@ data class Post(
     val id: Int = 0,
     val date: String,
     val text: String,
-    val friendsOnly: Boolean,
+    val friendsOnly: Boolean?,
     val copyright: String,
-    val isPinned: Boolean,
-    val isFavorite: Boolean,
-    val marksAsAds: Boolean,
+    val isPinned: Boolean?,
+    val isFavorite: Boolean?,
+    val marksAsAds: Boolean?,
     val likes: Likes,
 )
 
@@ -54,11 +54,11 @@ fun main() {
         0,
         "11.11.11",
         "text",
-        friendsOnly = true,
+        friendsOnly = null,
         "author",
-        isPinned = true,
-        isFavorite = true,
-        marksAsAds = true,
+        isPinned = null,
+        isFavorite = null,
+        marksAsAds = null,
         likes,
     )
     service.add(post)

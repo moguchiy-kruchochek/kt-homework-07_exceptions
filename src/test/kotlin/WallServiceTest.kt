@@ -41,7 +41,7 @@ class WallServiceTest {
                 "authorr",
                 true,
                 false,
-                true,
+                null,
                 likes,
             )
         )
@@ -52,7 +52,7 @@ class WallServiceTest {
                 "super text",
                 false,
                 "corp",
-                true,
+                null,
                 true,
                 false,
                 likes,
@@ -63,7 +63,7 @@ class WallServiceTest {
                 0,
                 "03.03.25",
                 "important",
-                true,
+                null,
                 "mine",
                 true,
                 false,
@@ -78,9 +78,9 @@ class WallServiceTest {
             "IMPORTANT!",
             true,
             "me",
-            true,
-            true,
-            true,
+            null,
+            null,
+            null,
             likes,
         )
 
@@ -139,11 +139,11 @@ class WallServiceTest {
             6,
             "03.04.25",
             "IMPORTANT!",
-            true,
+            null,
             "me",
-            true,
-            true,
-            true,
+            null,
+            null,
+            null,
             likes,
         )
 
