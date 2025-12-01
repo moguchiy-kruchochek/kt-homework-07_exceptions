@@ -30,7 +30,7 @@ class WallServiceTest {
     }
 
     @Test
-    fun updateExistingWithTrueResult() {
+    fun updateWithTrueResult() {
         val service = WallService()
         val likes = Likes()
         val comment = Comment()
@@ -97,7 +97,7 @@ class WallServiceTest {
 
         val result = service.update(update)
 
-        assertTrue("The Post updated!", result)
+        assertTrue("No Post!", result)
     }
 
     @Test
