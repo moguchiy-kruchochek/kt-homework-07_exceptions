@@ -9,7 +9,7 @@ class WallServiceTest {
     fun add() {
         val service = WallService()
         val likes = Likes()
-
+        val comment = Comment()
 
         val post = Post(
             3,
@@ -21,6 +21,8 @@ class WallServiceTest {
             true,
             false,
             likes,
+            arrayOf(),
+            comment
         )
 
         val result = service.add(post)
@@ -28,9 +30,10 @@ class WallServiceTest {
     }
 
     @Test
-    fun updateExistingWithTrueResult() {
+    fun updateWithTrueResult() {
         val service = WallService()
         val likes = Likes()
+        val comment = Comment()
 
         service.add(
             Post(
@@ -41,8 +44,10 @@ class WallServiceTest {
                 "authorr",
                 true,
                 false,
-                true,
+                null,
                 likes,
+                arrayOf(),
+                comment
             )
         )
         service.add(
@@ -52,10 +57,12 @@ class WallServiceTest {
                 "super text",
                 false,
                 "corp",
-                true,
+                null,
                 true,
                 false,
                 likes,
+                arrayOf(),
+                comment
             )
         )
         service.add(
@@ -63,12 +70,14 @@ class WallServiceTest {
                 0,
                 "03.03.25",
                 "important",
-                true,
+                null,
                 "mine",
                 true,
                 false,
                 false,
                 likes,
+                arrayOf(),
+                comment
             )
         )
 
@@ -78,21 +87,24 @@ class WallServiceTest {
             "IMPORTANT!",
             true,
             "me",
-            true,
-            true,
-            true,
+            null,
+            null,
+            null,
             likes,
+            arrayOf(),
+            comment
         )
 
         val result = service.update(update)
 
-        assertTrue("The Post updated!", result)
+        assertTrue("No Post!", result)
     }
 
     @Test
     fun updateWithFalseResult() {
         val service = WallService()
         val likes = Likes()
+        val comment = Comment()
 
         service.add(
             Post(
@@ -105,6 +117,8 @@ class WallServiceTest {
                 false,
                 true,
                 likes,
+                arrayOf(),
+                comment
             )
 
         )
@@ -119,6 +133,8 @@ class WallServiceTest {
                 true,
                 false,
                 likes,
+                arrayOf(),
+                comment
             )
         )
         service.add(
@@ -132,6 +148,8 @@ class WallServiceTest {
                 false,
                 false,
                 likes,
+                arrayOf(),
+                comment
             )
         )
 
@@ -139,16 +157,66 @@ class WallServiceTest {
             6,
             "03.04.25",
             "IMPORTANT!",
-            true,
+            null,
             "me",
-            true,
-            true,
-            true,
+            null,
+            null,
+            null,
             likes,
+            arrayOf(),
+            comment
         )
 
         val result = service.update(update)
 
         assertFalse("No Posts with such ID :(", result)
+    }
+
+    @Test
+    fun createCommentAtExistPost() {
+        val service = WallService()
+        val likes = Likes()
+        val comment = Comment()
+
+        service.add(
+            Post(
+                1,
+                "11.11.20",
+                "text51",
+                true,
+                "authorr",
+                true,
+                false,
+                true,
+                likes,
+                arrayOf(),
+                comment
+            )
+        )
+        service.createComment(1, comment)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createCommentAtNotExistPost() {
+        val service = WallService()
+        val likes = Likes()
+        val comment = Comment()
+
+        service.add(
+            Post(
+                1,
+                "11.11.20",
+                "text51",
+                true,
+                "authorr",
+                true,
+                false,
+                true,
+                likes,
+                arrayOf(),
+                comment
+            )
+        )
+        service.createComment(10, comment)
     }
 }
