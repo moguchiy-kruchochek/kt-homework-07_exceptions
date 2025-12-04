@@ -139,78 +139,27 @@ class WallService {
 
 
 fun main() {
-    val service = WallService()
-    val likes = Likes()
-    val noteService = NoteService()
+    val service = ChatService()
 
-    val comment = Comment(1, 0, "Я был здесь Первый!", 2025, false)
-    val comment2 = Comment(2, 1, "Second Comment", 2020, false)
-    val comment3 = Comment(3, 2, "Third comment for NOTE", 2049, false)
+    service.createChat(1)
+    service.createMessage(1, "Roman")
+    service.createMessage(2, "Darov!")
+    service.createMessage(2, "go buhat")
 
-    val note = Note(
-        0,
-        "TITLE",
-        "Text of the NOTE",
-        2025,
-    )
-    noteService.add(note)
-    println(noteService.get())
-    noteService.update(
-        Note(
-            1,
-            "kjfsl",
-            "jlskjfsl",
-            203
-        )
-    )
-    println(noteService.get())
-    noteService.delete(1)
-    println(noteService.get())
+    println("Всего чатов: ${service.getChats().size}")
+    println("Непрочитанных чатов: ${service.getUnreadChatsCount()}")
+    println("Последние сообщения: ${service.getLastMessages()}")
 
 
-//    val video = Video(1, 1, "video_title", 50)
-//    val videoAttachment = VideoAttachment(video)
-//
-//    val audio = Audio(2, 2, "artist", "song")
-//    val audioAttachment = AudioAttachment(audio)
-//
-//    val photo = Photo(1, 1, "description here", 640, 480)
-//    val photoAttachment = PhotoAttachment(photo)
-//
-//    val noteToPost = NoteToPost(1, "title", "note", 45)
-//    val noteAttachment = NoteAttachment(noteToPost)
-//
-//    val link = Link("www.url.com", "link", "good link")
-//    val linkAttachment = LinkAttachment(link)
-//
-//    val post = Post(
-//        0,
-//        "11.11.11",
-//        "text",
-//        friendsOnly = null,
-//        "author",
-//        isPinned = null,
-//        isFavorite = null,
-//        marksAsAds = null,
-//        likes,
-//        attachments = arrayOf(videoAttachment, audioAttachment, photoAttachment, noteAttachment, linkAttachment),
-//        comment
-//    )
-//    service.add(post)
-//    service.update(
-//        Post(
-//            1,
-//            "03.04.25",
-//            "Important text",
-//            false,
-//            "me",
-//            true,
-//            false,
-//            false,
-//            likes,
-//            arrayOf(videoAttachment, audioAttachment, photoAttachment),
-//            comment
-//        )
-//    )
-//    println(post)
+    println("${service.getMessagesByUserId(2, 2)} \nПрочитано сообщения от юзера 2")
+    println("Теперь непрочитанных чатов: ${service.getUnreadChatsCount()}")
+
+    println("${service.getMessagesByUserId(1, 10)} \nПрочитано сообщения от юзера 1")
+    println("Теперь непрочитанных чатов: ${service.getUnreadChatsCount()}")
+
+    service.editMessage(2, 2, "go pivo pit, please")
+    service.deleteMessage(2, 2)
+
+    service.deleteChat(1)
+    service.deleteChat(2)
 }
